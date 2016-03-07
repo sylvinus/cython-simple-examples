@@ -1,0 +1,7 @@
+def func():
+    a = 0
+    for i in xrange(0, 100000000):
+        a += i
+    return a
+
+print func()
