@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Cython: test4.pyx</title>
+    <title>Cython: test5.pyx</title>
     <style type="text/css">
     
 body.cython { font-family: courier; font-size: 12; }
@@ -301,43 +301,29 @@ body.cython { font-family: courier; font-size: 12; }
     <span style="background-color: #FFFF00">Yellow lines</span> hint at Python interaction.<br />
     Click on a line that starts with a "<code>+</code>" to see the C code that Cython generated for it.
 </p>
-<p>Raw output: <a href="test4.c">test4.c</a></p>
-<div class="cython"><pre class="cython line score-0">&#xA0;<span class="">01</span>: </pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">02</span>: cdef long func():</pre>
-<pre class='cython code score-0 '>static long __pyx_f_5test4_func(void) {
-  long __pyx_v_a;
-  long __pyx_v_i;
-  long __pyx_r;
+<p>Raw output: <a href="test5.c">test5.c</a></p>
+<div class="cython"><pre class="cython line score-0">&#xA0;<span class="">1</span>: from libc.stdlib cimport rand</pre>
+<pre class="cython line score-0">&#xA0;<span class="">2</span>: </pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">3</span>: cdef int f():</pre>
+<pre class='cython code score-0 '>static int __pyx_f_5test5_f(void) {
+  int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
-  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("func", 0);
+  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("f", 0);
 /* … */
   /* function exit code */
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0">&#xA0;<span class="">03</span>:     cdef long a</pre>
-<pre class="cython line score-0">&#xA0;<span class="">04</span>:     cdef long i</pre>
-<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">05</span>:     a = 0</pre>
-<pre class='cython code score-0 '>  __pyx_v_a = 0;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">06</span>:     for i in xrange(0, 100000000):</pre>
-<pre class='cython code score-0 '>  for (__pyx_t_1 = 0; __pyx_t_1 &lt; 0x5F5E100; __pyx_t_1+=1) {
-    __pyx_v_i = __pyx_t_1;
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">07</span>:         a += i</pre>
-<pre class='cython code score-0 '>    __pyx_v_a = (__pyx_v_a + __pyx_v_i);
-  }
-</pre><pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">08</span>:     return a</pre>
-<pre class='cython code score-0 '>  __pyx_r = __pyx_v_a;
+</pre><pre class="cython line score-0">&#xA0;<span class="">4</span>: 	# We are not seeding so this will always return the same number :)</pre>
+<pre class="cython line score-0">&#xA0;<span class="">5</span>: 	# Main interest is looking at the extra '#include "stdlib.h"' in test4.c</pre>
+<pre class="cython line score-0" onclick='toggleDiv(this)'>+<span class="">6</span>:     return rand()</pre>
+<pre class='cython code score-0 '>  __pyx_r = rand();
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">09</span>: </pre>
-<pre class="cython line score-8" onclick='toggleDiv(this)'>+<span class="">10</span>: res = func()</pre>
-<pre class='cython code score-8 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_long</span>(__pyx_f_5test4_func());<span class='error_goto'> if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
+</pre><pre class="cython line score-0">&#xA0;<span class="">7</span>: </pre>
+<pre class="cython line score-5" onclick='toggleDiv(this)'>+<span class="">8</span>: print f()</pre>
+<pre class='cython code score-5 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_f_5test5_f());<span class='error_goto'> if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_res, __pyx_t_1) &lt; 0) <span class='error_goto'>{__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
-  <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-5" onclick='toggleDiv(this)'>+<span class="">11</span>: print res</pre>
-<pre class='cython code score-5 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_GetModuleGlobalName</span>(__pyx_n_s_res);<span class='error_goto'> if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
-  <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
-  if (<span class='pyx_c_api'>__Pyx_PrintOne</span>(0, __pyx_t_1) &lt; 0) <span class='error_goto'>{__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
+  if (<span class='pyx_c_api'>__Pyx_PrintOne</span>(0, __pyx_t_1) &lt; 0) <span class='error_goto'>{__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
 </pre></div></body></html>

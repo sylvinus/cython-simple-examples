@@ -1,8 +1,11 @@
-from libc.stdlib cimport rand
 
-cdef int f():
-	# We are not seeding so this will always return the same number :)
-	# Main interest is looking at the extra '#include "stdlib.h"' in test4.c
-    return rand()
+cdef long func():
+    cdef long a
+    cdef long i
+    a = 0
+    for i in xrange(0, 100000000):
+        a += i
+    return a
 
-print f()
+res = func()
+print res
